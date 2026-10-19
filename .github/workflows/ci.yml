@@ -1,0 +1,38 @@
+name: CI/CD
+on:
+  push: { branches: [main] }
+  pull_request:
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: backend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm install
+      - run: npm test
+  frontend:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: frontend } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm install
+      - run: npm run build
+  docker:
+    needs: [backend, frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose build
+  deploy:
+    needs: [docker]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      # Add RENDER_DEPLOY_HOOK_BACKEND / RENDER_DEPLOY_HOOK_FRONTEND as repository secrets (Render > Settings > Deploy Hook)
+      - run: |
+          [ -n "${{ secrets.RENDER_DEPLOY_HOOK_BACKEND }}" ] && curl -fsS "${{ secrets.RENDER_DEPLOY_HOOK_BACKEND }}" || echo "backend hook not set"
+          [ -n "${{ secrets.RENDER_DEPLOY_HOOK_FRONTEND }}" ] && curl -fsS "${{ secrets.RENDER_DEPLOY_HOOK_FRONTEND }}" || echo "frontend hook not set"

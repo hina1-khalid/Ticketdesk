@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { font-family: 'Public Sans', system-ui, sans-serif; }
+  html[lang='ur'] body { font-family: 'Noto Nastaliq Urdu', 'Public Sans', serif; line-height: 2; }
+  body { @apply bg-paper text-ink antialiased; }
+  .dark body { @apply bg-night text-slate-200; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Public Sans', sans-serif; letter-spacing: -0.01em; }
+  ::selection { background: #0F5C5A; color: #fff; }
+}
+@layer components {
+  .card { @apply bg-paper-card border border-paper-line rounded-xl shadow-[0_1px_0_rgba(22,33,43,0.03)]; }
+  .dark .card { @apply bg-night-card border-night-line; }
+  .btn { @apply inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg text-sm font-medium transition border border-paper-line bg-white hover:bg-paper disabled:opacity-50; }
+  .dark .btn { @apply bg-night-card border-night-line hover:bg-night-line; }
+  .btn-primary { @apply bg-brand text-white border-brand hover:bg-brand-dark; }
+  .dark .btn-primary { @apply bg-brand border-brand hover:bg-brand-dark; }
+  .btn-danger { @apply text-signal-red border-signal-red/40 hover:bg-signal-red/10; }
+  .input { @apply w-full px-3 py-2 rounded-lg text-sm border border-paper-line bg-white focus:outline-none focus:ring-2 focus:ring-brand/40 focus:border-brand; }
+  .dark .input { @apply bg-night border-night-line text-slate-200; }
+  .label { @apply block text-xs font-semibold uppercase tracking-wide text-ink-soft mb-1; }
+  .dark .label { @apply text-slate-400; }
+  .pill { @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap; }
+  .th { @apply text-left text-xs font-semibold uppercase tracking-wide text-ink-soft px-3 py-2; }
+  .td { @apply px-3 py-2.5 text-sm; }
+  .muted { @apply text-ink-soft dark:text-slate-400; }
+}

@@ -1,0 +1,38 @@
+# One command: docker compose up --build   ->  http://localhost:8080
+services:
+  mongo:
+    image: mongo:7
+    volumes: [mongo-data:/data/db]
+  redis:
+    image: redis:7-alpine
+  ai:
+    build: ./ai-service
+  backend:
+    build: ./backend
+    environment:
+      MONGO_URI: mongodb://mongo:27017/ticketdesk
+      REDIS_URL: redis://redis:6379
+      AI_SERVICE_URL: http://ai:8000
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      CLIENT_URL: http://localhost:8080
+      INBOUND_EMAIL_SECRET: ${INBOUND_EMAIL_SECRET:-change-me}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      IMAP_HOST: ${IMAP_HOST:-}
+      IMAP_USER: ${IMAP_USER:-}
+      IMAP_PASS: ${IMAP_PASS:-}
+      TWILIO_SID: ${TWILIO_SID:-}
+      TWILIO_TOKEN: ${TWILIO_TOKEN:-}
+      TWILIO_WHATSAPP_FROM: ${TWILIO_WHATSAPP_FROM:-}
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:5000}
+    volumes: [uploads:/app/uploads]
+    depends_on: [mongo, redis, ai]
+  frontend:
+    build: ./frontend
+    ports: ["8080:80"]
+    depends_on: [backend]
+volumes:
+  mongo-data:
+  uploads:

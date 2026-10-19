@@ -1,0 +1,21 @@
+node_modules
+.env
+logs
+uploads/*
+!uploads/.gitkeep
+dist
+__pycache__
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+**/.env
+**/.env.*
+!.env.example
+
+# Ignore environment secrets everywhere
+**/.env
+**/.env.*
+!.env.example

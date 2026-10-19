@@ -1,0 +1,48 @@
+text,category,priority
+I cannot login to my account,Account,high
+password reset email not arriving,Account,high
+mera login nahi ho raha,Account,high
+password bhool gaya account khul nahi raha,Account,medium
+account locked after wrong otp,Account,high
+sign in page shows error,Account,high
+login nahi ho raha jaldi madad karein,Account,high
+how do I change my account email,Account,low
+wifi is very slow in office,IT,medium
+printer not working,IT,medium
+printer nahi chal raha,IT,medium
+laptop will not start,IT,high
+vpn keeps disconnecting,IT,high
+internet nahi chal raha poora office,IT,urgent
+need software installed on my computer,IT,low
+monitor flickering,IT,low
+server down production urgent,IT,urgent
+refund for double charged invoice,Billing,high
+payment failed but money deducted,Billing,high
+payment nahi ho rahi card error,Billing,high
+paisay kat gaye refund chahiye,Billing,high
+need a copy of my invoice,Billing,low
+billing question about subscription,Billing,low
+wrong amount on bill,Billing,medium
+salary slip missing,HR,medium
+tankhwah slip chahiye,HR,medium
+leave balance is wrong,HR,medium
+chutti ka balance ghalat hai,HR,medium
+attendance not marked,HR,medium
+how to apply for vacation,HR,low
+contract renewal question,HR,low
+app crashes when uploading file,Bug,high
+error 500 on the dashboard,Bug,high
+button does not work,Bug,medium
+page kaam nahi kar raha error aa raha hai,Bug,high
+website hang ho jata hai,Bug,medium
+data not saving exception shown,Bug,high
+data loss after update critical,Bug,urgent
+please add dark mode,Feature,low
+feature request export to excel,Feature,low
+it would be nice to have notifications,Feature,low
+suggestion add filter by date,Feature,low
+new option chahiye dashboard mein,Feature,low
+general question about your services,General,low
+need information about opening hours,General,low
+kaise pata chalega ke ticket resolve hua,General,low
+thank you for the quick help,General,low
